@@ -7,60 +7,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <div class="container">
-        
-        <!-- HALAMAN 1: TAMPILAN AWAL -->
-        <div id="halamanAwal">
-            <h1>Sistem Database Proyek</h1>
-            <p class="subtitle">Selamat Datang di Aplikasi Manajemen Data</p>
-            <button id="btnMulai">Masuk ke Sistem</button>
-        </div>
-
-        <!-- HALAMAN 2: FORM INPUT DATA (Disembunyikan di awal) -->
-        <div id="halamanForm" class="hidden">
-            <h2>Input Data Personal</h2>
-            <p class="subtitle">Silakan masukkan data dengan benar</p>
-            
-            <form id="formPendaftaran">
-                <div class="input-group">
-                    <label for="namaLengkap">Nama Lengkap</label>
-                    <input type="text" id="namaLengkap" placeholder="Masukkan nama lengkap" required>
-                </div>
-
-                <div class="input-group">
-                    <label for="emailUser">Alamat Email</label>
-                    <input type="email" id="emailUser" placeholder="contoh@email.com" required>
-                </div>
-
-                <div class="input-group">
-                    <label for="nomorHp">Nomor HP / WhatsApp</label>
-                    <input type="tel" id="nomorHp" placeholder="Contoh: 08123456xxx" required>
-                </div>
-
-                <!-- Dua Pilihan Tombol Sesuai Request -->
-                <div class="action-buttons">
-                    <button type="button" id="btnSimpanBaru" class="btn-secondary">Save & Isian Baru</button>
-                    <button type="button" id="btnSelesai" class="btn-success">Selesai</button>
-                </div>
-            </form>
-        </div>
-
-        <!-- HALAMAN 3: PESAN TERIMA KASIH (Disembunyikan di awal) -->
-        <div id="halamanSelesai" class="hidden">
-            <div class="thank-you-box">
-                <h1>🎉 Terima Kasih!</h1>
-                <p>Semua data personal Anda telah berhasil tersimpan ke dalam Sistem Database Proyek.</p>
-                
-                <!-- TOMBOL DOWNLOAD EXCEL BARU -->
-                <button id="btnDownloadExcel" style="background-color: #15803d; margin-top: 15px;">📥 Download Data Excel</button>
-                
-                <button id="btnKembali" class="btn-link">Kembali ke Awal</button>
-            </div>
-        </div>
-
+        <h1>Sistem Database Proyek</h1>
+        <p class="subtitle">Selamat Datang di Aplikasi Manajemen Data</p>
+        <!-- Tombol ini langsung mengarahkan ke halaman kedua (input.html) -->
+        <button onclick="bukaForm()">Masuk ke Sistem</button>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        function bukaForm() {
+            alert("Selamat Datang! Silahkan ikuti petunjuk berikutnya!");
+            window.location.href = "input.html"; // Berpindah halaman fisik
+        }
+    </script>
 </body>
 </html>

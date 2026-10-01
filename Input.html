@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Data - Sistem Database Proyek</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- BLOK FORM INPUT -->
+        <div id="blokForm">
+            <h2>Input Data Personal</h2>
+            <p class="subtitle">Silakan masukkan data dengan benar</p>
+            
+            <form id="formPendaftaran">
+                <div class="input-group">
+                    <label for="namaLengkap">Nama Lengkap</label>
+                    <input type="text" id="namaLengkap" placeholder="Masukkan nama lengkap" required>
+                </div>
+                <div class="input-group">
+                    <label for="emailUser">Alamat Email</label>
+                    <input type="email" id="emailUser" placeholder="contoh@email.com" required>
+                </div>
+                <div class="input-group">
+                    <label for="nomorHp">Nomor HP / WhatsApp</label>
+                    <input type="tel" id="nomorHp" placeholder="Contoh: 08123456xxx" required>
+                </div>
+
+                <div class="action-buttons">
+                    <button type="button" onclick="simpanDanBaru()" class="btn-secondary">Save & Isian Baru</button>
+                    <button type="button" onclick="simpanDanSelesai()" class="btn-success">Selesai</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- BLOK SUKSES (Disembunyikan di awal) -->
+        <div id="blokSukses" class="hidden" style="text-align: center;">
+            <h1>🎉 Terima Kasih!</h1>
+            <p>Semua data personal Anda telah berhasil tersimpan ke dalam Sistem Database Proyek.</p>
+            <button onclick="window.location.href='index.html'" class="btn-link">Kembali ke Awal</button>
+        </div>
+    </div>
+
+    <script>
+        function ambilDanSimpan() {
+            const nama = document.getElementById('namaLengkap').value;
+            const email = document.getElementById('emailUser').value;
+            const hp = document.getElementById('nomorHp').value;
+            
+            if (!nama || !email || !hp) {
+                alert("Peringatan: Semua kolom data personal wajib diisi!");
+                return false;
+            }
+
+            let database = JSON.parse(localStorage.getItem('databaseProyekAde')) || [];
+            database.push({
+                namaLengkap: nama,
+                emailUser: email,
+                nomorHp: hp,
+                waktuInput: new Date().toLocaleString('id-ID')
+            });
+            localStorage.setItem('databaseProyekAde', JSON.stringify(database));
+            return true;
+        }
+
+        function simpanDanBaru() {
+            if (ambilDanSimpan()) {
+                alert("Data Berhasil Disimpan! Silakan isi data baru selanjutnya.");
+                document.getElementById('formPendaftaran').reset();
+            }
+        }
+
+        function simpanDanSelesai() {
+            if (ambilDanSimpan()) {
+                document.getElementById('blokForm').classList.add('hidden');
+                document.getElementById('blokSukses').classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
